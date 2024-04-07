@@ -3,6 +3,7 @@
     "Automobiliai": "Vehicles",
     "Kalba": "Langauge",
 
+
     "Pridėti": "Add",
     "Redaguoti": "Edit",
     "Ištrinti": "Delete",
@@ -15,7 +16,14 @@
     "El. paštas": "Email",
     "Adresas": "Address",
 
+    "Pridėti naują automobilio savininką": "Adding a new vehicle owner",
     "Redaguoti automobilio savininką": "Vehicle owner editing",
+
+    "Vardas turi būti nuo :min iki :max simbolių ilgio": "Name has to be between :min and :max characters long.",
+    "Pavardė turi būti nuo :min iki :max simbolių ilgio": "Surname has to be between :min to :max characters long.",
+    "Telefono numeris turi būti sudarytas iš skaičių ir ne ilgesnis nei :max simboliai": "Phone number has to be made up of numbers and shorter than :max characters.",
+    "El. paštas turi būti unikalus ir nuo :min iki :max simbolių ilgio": "Email has to be unique and between :min and :max characters long.",
+    "Adresas turi būti iki :max simbolių ilgio": "Address has to be up to :max characters long.",
 
 
     "Valstybiniai numeriai": "License plate number",
@@ -23,7 +31,14 @@
     "Modelis": "Model",
     "Savininkas": "Owner",
 
+    "Pridėti naują automobilį": "Add a new vehicle",
     "Redaguoti automobilį": "Vehicle editing",
+
+    "Valstybinių numerių formatas turi būti: ABC123": "License plate number format has to be: ABC123.",
+    "Markė turi būti nuo :min iki :max simbolių ilgio":"Make has to be between :min and :max characters long.",
+    "Modelis yra privalomas ir turi būti iki :max simbolių ilgio":"Model is required and has to be up to :max characters long.",
+    "Savininkas yra privalomas":"Owner is required.",
+
 
 
     "Kilus nesklandumams susisiekite telefono nr.": "In case of any problems, contact the following phone number",

@@ -9,6 +9,24 @@ use Illuminate\Http\Request;
 
 class CarController extends Controller
 {
+    public function Validation($request)
+    {
+        $this->validationRules =
+        [
+            'reg_number'=> 'regex:/^[A-Z]{3}[0-9]{3}/i',
+            'brand'=> 'required|min:3|max:32',
+            'model'=> 'required|max:32',
+            'owner_id'=> 'required',
+        ];
+        $this->validationMessages =
+        [
+            'reg_number'=> __('Valstybinių numerių formatas turi būti: ABC123'),
+            'brand'=> __('Markė turi būti nuo :min iki :max simbolių ilgio', ['min' => 3, 'max' => 32]),
+            'model'=> __('Modelis yra privalomas ir turi būti iki :max simbolių ilgio', ['min' => 3, 'max' => 32]),
+            'owner_id'=> __('Savininkas yra privalomas'),
+        ];
+        $this->validate($request, $this->validationRules, $this->validationMessages);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -30,8 +48,11 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
+        $this->Validation($request);
+
         $car=Car::create($request->all());
         $car->save();
+
         return redirect()->route('cars.index');
     }
 
@@ -56,6 +77,8 @@ class CarController extends Controller
      */
     public function update(Request $request, Car $car)
     {
+        $this->Validation($request);
+
         $car->update($request->all());
         $car->save();
         return redirect()->route('cars.index');

@@ -6,9 +6,17 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        {{ __('Redaguoti automobilio savininką') }}.
+                        {{ __('Redaguoti automobilio savininką') }}
                     </div>
                     <div class="card-body">
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                    <div>{{$error}} </div>
+                                @endforeach
+                            </div>
+                        @endif
+
                         <form method="post" action="{{ route('owner.save', $owner->id) }}">
                             @csrf
                             <div class="mb-3">

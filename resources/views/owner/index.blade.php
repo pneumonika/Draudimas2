@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        {{ __('Automobilių savininkai') }}.
+                        {{ __('Automobilių savininkai') }}
                         <a class="btn btn-primary" href="{{ route('owner.create') }}">{{ __('Pridėti') }}</a>
                     </div>
                     <div class="card-body">

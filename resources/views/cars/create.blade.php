@@ -6,22 +6,31 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        {{ __('Pridėti naują automobilį.') }}
+                        {{ __('Pridėti naują automobilį') }}
                     </div>
                     <div class="card-body">
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                    <div>{{$error}} </div>
+                                @endforeach
+                            </div>
+                        @endif
+
                         <form method="post" action="{{ route('cars.store') }}">
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">{{ __('Valstybiniai numeriai') }}:</label>
-                                <input type="text" class="form-control" name="reg_number">
+                                <input type="text" class="form-control" name="reg_number" value="{{old('reg_number')}}">
                             </div>
+{{--                                @error('reg_number') {{ $message }} @enderror--}}
                             <div class="mb-3">
                                 <label class="form-label">{{ __('Markė') }}:</label>
-                                <input type="text" class="form-control" name="brand">
+                                <input type="text" class="form-control" name="brand" value="{{old('brand')}}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">{{ __('Modelis') }}:</label>
-                                <input type="text" class="form-control" name="model">
+                                <input type="text" class="form-control" name="model" value="{{old('model')}}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">{{ __('Savininkas') }}:</label>

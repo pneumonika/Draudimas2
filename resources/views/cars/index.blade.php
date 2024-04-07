@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        {{ __('Automobiliai') }}.
+                        {{ __('Automobiliai') }}
                         <a class="btn btn-primary" href="{{ route('cars.create') }}">{{ __('Pridėti') }}</a>
                     </div>
                     <div class="card-body">

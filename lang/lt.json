@@ -3,6 +3,7 @@
     "Automobiliai": "Automobiliai",
     "Kalba": "Kalba",
 
+
     "Pridėti": "Pridėti",
     "Redaguoti": "Redaguoti",
     "Ištrinti": "Ištrinti",
@@ -15,7 +16,14 @@
     "El. paštas": "El. paštas",
     "Adresas": "Adresas",
 
+    "Pridėti naują automobilio savininką": "Pridėti naują automobilio savininką",
     "Redaguoti automobilio savininką": "Redaguoti automobilio savininką",
+
+    "Vardas turi būti nuo :min iki :max simbolių ilgio": "Vardas turi būti nuo :min iki :max simbolių ilgio.",
+    "Pavardė turi būti nuo :min iki :max simbolių ilgio": "Pavardė turi būti nuo :min iki :max simbolių ilgio.",
+    "Telefono numeris turi būti sudarytas iš skaičių ir ne ilgesnis nei :max simboliai": "Telefono numeris turi būti sudarytas iš skaičių ir ne ilgesnis nei :max simboliai.",
+    "El. paštas turi būti unikalus ir nuo :min iki :max simbolių ilgio": "El. paštas turi būti unikalus ir nuo :min iki :max simbolių ilgio.",
+    "Adresas turi būti iki :max simbolių ilgio": "Adresas turi būti iki :max simbolių ilgio.",
 
 
     "Valstybiniai numeriai": "Valstybiniai numeriai",
@@ -23,7 +31,13 @@
     "Modelis": "Modelis",
     "Savininkas": "Savininkas",
 
+    "Pridėti naują automobilį": "Pridėti naują automobilį",
     "Redaguoti automobilį": "Redaguoti automobilį",
+
+    "Valstybinių numerių formatas turi būti: ABC123": "Valstybinių numerių formatas turi būti: ABC123.",
+    "Markė turi būti nuo :min iki :max simbolių ilgio": "Markė turi būti nuo :min iki :max simbolių ilgio.",
+    "Modelis yra privalomas ir turi būti iki :max simbolių ilgio":"Modelis yra privalomas ir turi būti iki :max simbolių ilgio.",
+    "Savininkas yra privalomas": "Savininkas yra privalomas.",
 
 
     "Kilus nesklandumams susisiekite telefono nr.": "Kilus nesklandumams susisiekite telefono nr.",

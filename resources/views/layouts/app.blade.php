@@ -36,7 +36,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('cars.index') }}">{{ __('Automobiliai') }}</a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <select name="languages" class="form-select" onchange="window.location.href=this.value;">
                                 <option>{{ __('Kalba') }}</option>
