@@ -29,8 +29,10 @@
                               <td>{{ $owner->phone }}</td>
                               <td>{{ $owner->email }}</td>
                               <td>{{ $owner->address }}</td>
-                              <td>
+                              <td style="width: 100px;">
                                   <a class="btn btn-info" href="{{ route('owner.edit', $owner->id) }}">Redaguoti</a>
+                              </td>
+                              <td style="width: 100px;">
                                   <a class="btn btn-danger" href="{{ route('owner.delete', $owner->id) }}">Ištrinti</a>
                               </td>
                           </tr>
