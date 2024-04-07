@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Owner;
 use Illuminate\Http\Request;
 
+
 class OwnerController extends Controller
 {
     //
@@ -24,7 +25,7 @@ class OwnerController extends Controller
         return redirect()->route('owner.index');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         return view('owner.index', ['owners' => Owner::all()]);
     }

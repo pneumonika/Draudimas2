@@ -1,0 +1,33 @@
+{
+    "Draudėjai": "Policyholders",
+    "Automobiliai": "Vehicles",
+    "Kalba": "Langauge",
+
+    "Pridėti": "Add",
+    "Redaguoti": "Edit",
+    "Ištrinti": "Delete",
+
+
+    "Automobilių savininkai": "Vehicle owners",
+    "Vardas": "Name",
+    "Pavardė": "Surname",
+    "Telefonas": "Phone",
+    "El. paštas": "Email",
+    "Adresas": "Address",
+
+    "Redaguoti automobilio savininką": "Vehicle owner editing",
+
+
+    "Valstybiniai numeriai": "License plate number",
+    "Markė": "Make",
+    "Modelis": "Model",
+    "Savininkas": "Owner",
+
+    "Redaguoti automobilį": "Vehicle editing",
+
+
+    "Kilus nesklandumams susisiekite telefono nr.": "In case of any problems, contact the following phone number",
+    "el. paštu": "or email",
+
+    "Jūs prisijungėte!": "You are logged in!"
+}

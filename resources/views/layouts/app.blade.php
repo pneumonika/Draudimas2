@@ -31,10 +31,18 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('owner.index') }}">Draudėjai</a>
+                            <a class="nav-link" href="{{ route('owner.index') }}">{{ __('Draudėjai') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cars.index') }}">Automobiliai</a>
+                            <a class="nav-link" href="{{ route('cars.index') }}">{{ __('Automobiliai') }}</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <select name="languages" class="form-select" onchange="window.location.href=this.value;">
+                                <option>{{ __('Kalba') }}</option>
+                                <option value="{{ route('setLanguage','LT') }}">LT</option>
+                                <option value="{{ route('setLanguage','EN') }}">EN</option>
+                            </select>
                         </li>
                     </ul>
 
@@ -80,6 +88,9 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <div class="container pb-4">
+            {{ __('Kilus nesklandumams susisiekite telefono nr.') }}: [[tel]], {{ __('el. paštu') }}: [[email]].
+        </div>
     </div>
 </body>
 </html>

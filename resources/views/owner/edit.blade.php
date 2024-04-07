@@ -6,32 +6,32 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        Redaguoti automobilio savininką.
+                        {{ __('Redaguoti automobilio savininką') }}.
                     </div>
                     <div class="card-body">
                         <form method="post" action="{{ route('owner.save', $owner->id) }}">
                             @csrf
                             <div class="mb-3">
-                                <label class="form-label">Vardas:</label>
+                                <label class="form-label">{{ __('Vardas') }}:</label>
                                 <input type="text" class="form-control" name="name" value="{{ $owner->name }}">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Pavardė:</label>
+                                <label class="form-label">{{ __('Pavardė') }}:</label>
                                 <input type="text" class="form-control" name="surname" value="{{ $owner->surname }}">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Telefonas:</label>
+                                <label class="form-label">{{ __('Telefonas') }}:</label>
                                 <input type="text" class="form-control" name="phone" value="{{ $owner->phone }}">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">El. paštas:</label>
+                                <label class="form-label">{{ __('El. paštas') }}:</label>
                                 <input type="text" class="form-control" name="email" value="{{ $owner->email }}">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Adresas:</label>
+                                <label class="form-label">{{ __('Adresas') }}:</label>
                                 <input type="text" class="form-control" name="address" value="{{ $owner->address }}">
                             </div>
-                            <button class="btn btn-info">Redaguoti</button>
+                            <button class="btn btn-info">{{ __('Redaguoti') }}</button>
                         </form>
                     </div>
                 </div>

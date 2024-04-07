@@ -6,18 +6,18 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        Automobilių savininkai.
-                        <a class="btn btn-primary" href="{{ route('owner.create') }}">Pridėti</a>
+                        {{ __('Automobilių savininkai') }}.
+                        <a class="btn btn-primary" href="{{ route('owner.create') }}">{{ __('Pridėti') }}</a>
                     </div>
                     <div class="card-body">
                       <table class="table">
                           <thead>
                           <tr>
-                              <th>Vardas</th>
-                              <th>Pavardė</th>
-                              <th>Telefonas</th>
-                              <th>El. paštas</th>
-                              <th>Adresas</th>
+                              <th>{{ __('Vardas') }}</th>
+                              <th>{{ __('Pavardė') }}</th>
+                              <th>{{ __('Telefonas') }}</th>
+                              <th>{{ __('El. paštas') }}</th>
+                              <th>{{ __('Adresas') }}</th>
                               <th></th>
                           </tr>
                           </thead>
@@ -30,10 +30,10 @@
                               <td>{{ $owner->email }}</td>
                               <td>{{ $owner->address }}</td>
                               <td style="width: 100px;">
-                                  <a class="btn btn-info" href="{{ route('owner.edit', $owner->id) }}">Redaguoti</a>
+                                  <a class="btn btn-info" href="{{ route('owner.edit', $owner->id) }}">{{ __('Redaguoti') }}</a>
                               </td>
                               <td style="width: 100px;">
-                                  <a class="btn btn-danger" href="{{ route('owner.delete', $owner->id) }}">Ištrinti</a>
+                                  <a class="btn btn-danger" href="{{ route('owner.delete', $owner->id) }}">{{ __('Ištrinti') }}</a>
                               </td>
                           </tr>
                           @endforeach

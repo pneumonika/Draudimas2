@@ -6,14 +6,15 @@ use App\Models\Car;
 use App\Models\Owner;
 use Illuminate\Http\Request;
 
+
 class CarController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('car.index', ['cars'=>Car::with('owner')->get()]);
+        return view('cars.index', ['cars'=>Car::with('owner')->get()]);
     }
 
     /**
@@ -21,7 +22,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        return view('car.create', ['owners'=>Owner::all()]);
+        return view('cars.create', ['owners'=>Owner::all()]);
     }
 
     /**
@@ -47,7 +48,7 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
-        return view('car.edit', ['car'=>$car], ['owners'=>Owner::all()]);
+        return view('cars.edit', ['car'=>$car], ['owners'=>Owner::all()]);
     }
 
     /**
