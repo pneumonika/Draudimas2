@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ShortCodeController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\OwnerController;
@@ -32,6 +33,11 @@ Route::get('/owners', [OwnerController::class,'index'])->name('owner.index');
 
 Route::middleware(['auth'])->group(function ()
 {
+    Route::get('/cars/{id}/imageDelete', [ImageController::class, 'imageDelete'])->name('image.delete');
+    Route::get('/cars/{id}/imageDownload', [ImageController::class, 'imageDownload'])->name('image.download');
+    Route::get('/cars/{id}/imageDownloadAll', [ImageController::class, 'imageDownloadAll'])->name('image.downloadAll');
+    Route::get('/cars/{id}/imageView', [ImageController::class, 'imageView'])->name('image.view');
+
     Route::resource('cars', CarController::class);
 
     Route::middleware(['permission'])->group(function ()

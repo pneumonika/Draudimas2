@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Models\Owner;
+use App\Models\CarImage;
 use Illuminate\Http\Request;
 
 
@@ -50,7 +51,7 @@ class CarController extends Controller
     {
         $this->Validation($request);
 
-        $car=Car::create($request->all());
+        $car = Car::create($request->all());
         $car->save();
 
         return redirect()->route('cars.index');
@@ -80,7 +81,20 @@ class CarController extends Controller
         $this->Validation($request);
 
         $car->update($request->all());
-        $car->save();
+
+        if ($request->file('image') !== null)
+        {
+            $file = $request->file('image');
+
+            $file->store('/images');
+
+            $carImage = new CarImage;
+            $carImage->image_file = $file->hashName();
+            $carImage->image_name = $file->getClientOriginalName();
+            $carImage->car_id = $car->id;
+            $carImage->save();
+        }
+
         return redirect()->route('cars.index');
     }
 

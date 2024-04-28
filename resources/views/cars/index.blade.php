@@ -17,6 +17,7 @@
                                 <th>{{ __('Markė') }}</th>
                                 <th>{{ __('Modelis') }}</th>
                                 <th>{{ __('Savininkas') }}</th>
+                                <th>{{ __('Nuotraukos') }}</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -27,6 +28,11 @@
                                     <td>{{ $car->brand }}</td>
                                     <td>{{ $car->model }}</td>
                                     <td>{{ $car->owner->name }} {{ $car->owner->surname }}</td>
+                                    <td>
+                                        @if ($car->images->isNotEmpty())
+                                            <a href="{{  route('image.downloadAll', $car->id) }}" class="btn btn-primary" target="_blank">{{ __('Atsisiųsti') }}</a>
+                                        @endif
+                                    </td>
                                     <td style="width: 100px;">
                                         <a class="btn btn-info" href="{{ route('cars.edit', $car) }}">{{ __('Redaguoti') }}</a>
                                     </td>

@@ -17,15 +17,18 @@ class ShortCodeMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $response = $next($request);
-        $html = $response->getContent();
-
-        $shortcodes = \App\Models\ShortCode::all();
-        foreach ($shortcodes as $shortcode)
+        if (!$response instanceof \Symfony\Component\HttpFoundation\BinaryFileResponse)
         {
-            $html = str_replace($shortcode->shortcode, $shortcode->replace, $html);
-        }
+            $html = $response->getContent();
 
-        $response->setContent($html);
+            $shortcodes = \App\Models\ShortCode::all();
+            foreach ($shortcodes as $shortcode)
+            {
+                $html = str_replace($shortcode->shortcode, $shortcode->replace, $html);
+            }
+
+            $response->setContent($html);
+        }
         return $response;
     }
 }
