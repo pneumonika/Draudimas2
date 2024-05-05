@@ -7,7 +7,9 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         {{ __('Automobilių savininkai') }}
+                        @can('create', App\Models\Owner::class)
                         <a class="btn btn-primary" href="{{ route('owner.create') }}">{{ __('Pridėti') }}</a>
+                        @endcan
                     </div>
                     <div class="card-body">
                       <table class="table">
@@ -30,10 +32,14 @@
                               <td>{{ $owner->email }}</td>
                               <td>{{ $owner->address }}</td>
                               <td style="width: 100px;">
+                                  @can('update', $owner)
                                   <a class="btn btn-info" href="{{ route('owner.edit', $owner->id) }}">{{ __('Redaguoti') }}</a>
+                                  @endcan
                               </td>
                               <td style="width: 100px;">
+                                  @can('delete', $owner)
                                   <a class="btn btn-danger" href="{{ route('owner.delete', $owner->id) }}">{{ __('Ištrinti') }}</a>
+                                  @endcan
                               </td>
                           </tr>
                           @endforeach

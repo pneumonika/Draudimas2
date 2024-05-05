@@ -15,7 +15,7 @@ class PermissionMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->user()->permission != 'admin')
+        if ($request->user()->permission == "0") //0 - tik peržiūra, 1 - paprastas vartotojas, 2 - skaitantis vartotojas, 3 - administratorius.
         {
                 return redirect()->back();
         }

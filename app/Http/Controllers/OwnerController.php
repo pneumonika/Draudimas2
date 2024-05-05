@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class OwnerController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Owner::class, 'owner', ['except' => ['edit', 'save']]);
+    }
     public function Validation($request)
     {
         $this->validationRules =
@@ -49,12 +53,23 @@ class OwnerController extends Controller
 
     public function index(Request $request)
     {
-        return view('owner.index', ['owners' => Owner::all()]);
+        if ($request->user()->permission == 1)
+        {
+            $owners = Owner::with('user')->where('user_id', $request->user()->id)->get();
+        }
+        else
+        {
+            $owners = Owner::with('user')->get();
+        }
+
+        return view('owner.index', ['owners' => $owners]);
     }
 
     public function edit($id)
     {
         $owner = Owner::find($id);
+        $this->authorize('update', $owner);
+
         return view('owner.edit', ['owner' => $owner]);
     }
     public function save($id, Request $request)
@@ -62,6 +77,8 @@ class OwnerController extends Controller
         $this->Validation($request);
 
         $owner = Owner::find($id);
+        $this->authorize('update', $owner);
+
         $owner->name = $request->name;
         $owner->surname = $request->surname;
         $owner->phone = $request->phone;

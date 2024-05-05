@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table)
+        Schema::table('owners', function (Blueprint $table)
         {
-            $table->integer('permission')->default(0);
-            //0 - tik peržiūra, 1 - paprastas vartotojas, 2 - skaitantis vartotojas, 3 - administratorius.
+            $table->foreignId('user_id')->nullable()->default(null);
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -23,9 +23,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table)
+        Schema::table('owners', function (Blueprint $table)
         {
-            $table->dropColumn('permission');
+            $table->dropForeign(['user_id']);
+            $table->dropColumn('user_id');
         });
     }
 };

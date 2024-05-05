@@ -8,29 +8,48 @@ use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
-    public function imageView($id)
+    public function imageView($id, Request $request)
     {
         $image = CarImage::find($id);
 
-        $path = storage_path("app/images/".$image->image_file);
+        $car = Car::find($image->car_id);
+        if ($request->user()->can('view-image', $car))
+        {
+            $path = storage_path("app/images/".$image->image_file);
 
-        // Create a response and set the content type and disposition
-        return response()->file($path, [
-            'Content-Type' => 'image/*',
-            'Content-Disposition' => 'inline; filename="'.$image->image_name.'"'
-        ]);
+            // Create a response and set the content type and disposition
+            return response()->file($path, [
+                'Content-Type' => 'image/*',
+                'Content-Disposition' => 'inline; filename="'.$image->image_name.'"'
+            ]);
+        }
+        else
+        {
+            return redirect()->route('cars.index');
+        }
     }
 
-    public function imageDownload($id)
+    public function imageDownload($id, Request $request)
     {
         $image = CarImage::find($id);
 
-        return response()->download(storage_path()."/app/images/".$image->image_file, $image->image_name);
+        $car = Car::find($image->car_id);
+        if ($request->user()->can('view-image', $car))
+        {
+            return response()->download(storage_path()."/app/images/".$image->image_file, $image->image_name);
+        }
+        else
+        {
+            return redirect()->route('cars.index');
+        }
     }
 
     public function imageDownloadAll($id)
     {
-        $car = Car::find($id);
+        $car = Car::with('images')->find($id);
+
+        $this->authorize('update', $car);
+
         $zip = new \ZipArchive();
         $zipFileName = $car->brand . '_' . $car->model . '.zip';
         //$zipFileName = time() . '.zip';
@@ -46,14 +65,22 @@ class ImageController extends Controller
         return response()->download($zipFileName)->deleteFileAfterSend(true);
     }
 
-    public function imageDelete($id)
+    public function imageDelete($id, Request $request)
     {
         $image = CarImage::find($id);
 
-        unlink(storage_path()."/app/images/".$image->image_file);
+        $car = Car::find($image->car_id);
+        if ($request->user()->can('view-image', $car))
+        {
+            unlink(storage_path()."/app/images/".$image->image_file);
 
-        $image->delete();
+            $image->delete();
 
-        return redirect()->route('cars.edit',$image->car_id);
+            return redirect()->route('cars.edit',$image->car_id);
+        }
+        else
+        {
+            return redirect()->route('cars.index');
+        }
     }
 }

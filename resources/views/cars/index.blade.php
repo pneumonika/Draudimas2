@@ -7,7 +7,9 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         {{ __('Automobiliai') }}
+                        @can('create', App\Models\Car::class)
                         <a class="btn btn-primary" href="{{ route('cars.create') }}">{{ __('Pridėti') }}</a>
+                        @endcan
                     </div>
                     <div class="card-body">
                         <table class="table">
@@ -29,18 +31,24 @@
                                     <td>{{ $car->model }}</td>
                                     <td>{{ $car->owner->name }} {{ $car->owner->surname }}</td>
                                     <td>
+                                        @can('update', $car)
                                         @if ($car->images->isNotEmpty())
                                             <a href="{{  route('image.downloadAll', $car->id) }}" class="btn btn-primary" target="_blank">{{ __('Atsisiųsti') }}</a>
                                         @endif
+                                        @endcan
                                     </td>
                                     <td style="width: 100px;">
+                                        @can('update', $car)
                                         <a class="btn btn-info" href="{{ route('cars.edit', $car) }}">{{ __('Redaguoti') }}</a>
+                                        @endcan
                                     </td>
                                     <td style="width: 100px;">
                                         <form method="post" action="{{ route('cars.destroy', $car) }}">
                                             @csrf
+                                            @can('delete', $car)
                                             @method("delete")
                                             <button class="btn btn-danger">{{ __('Ištrinti') }}</button>
+                                            @endcan
                                         </form>
                                     </td>
                                 </tr>
