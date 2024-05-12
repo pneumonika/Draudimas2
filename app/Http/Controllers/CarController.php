@@ -37,16 +37,7 @@ class CarController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->user()->permission == 1)
-        {
-            $cars = Car::whereHas('owner', function ($query) use ($request) {
-                $query->where('user_id', $request->user()->id);
-            })->with(['images', 'owner'])->get();
-        }
-        else
-        {
-            $cars = Car::with(['images', 'owner'])->get();
-        }
+        $cars = Car::with(['images', 'owner'])->get();
 
         return view('cars.index', ['cars' => $cars]);
     }

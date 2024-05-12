@@ -25,6 +25,7 @@
                             </thead>
                             <tbody>
                             @foreach($cars as $car)
+                                @can('view', $car)
                                 <tr>
                                     <td>{{ $car->reg_number }}</td>
                                     <td>{{ $car->brand }}</td>
@@ -52,6 +53,7 @@
                                         </form>
                                     </td>
                                 </tr>
+                                @endcan
                             @endforeach
                             </tbody>
                       </table>

@@ -25,6 +25,7 @@
                           </thead>
                           <tbody>
                           @foreach($owners as $owner)
+                              @can('view', $owner)
                           <tr>
                               <td>{{ $owner->name }}</td>
                               <td>{{ $owner->surname }}</td>
@@ -42,6 +43,7 @@
                                   @endcan
                               </td>
                           </tr>
+                              @endcan
                           @endforeach
                           </tbody>
                       </table>

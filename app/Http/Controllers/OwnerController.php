@@ -32,7 +32,6 @@ class OwnerController extends Controller
             ];
         $this->validate($request, $this->validationRules, $this->validationMessages);
     }
-    //
     public function create()
     {
         return view("owner.create");
@@ -53,14 +52,7 @@ class OwnerController extends Controller
 
     public function index(Request $request)
     {
-        if ($request->user()->permission == 1)
-        {
-            $owners = Owner::with('user')->where('user_id', $request->user()->id)->get();
-        }
-        else
-        {
-            $owners = Owner::with('user')->get();
-        }
+        $owners = Owner::with('user')->get();
 
         return view('owner.index', ['owners' => $owners]);
     }

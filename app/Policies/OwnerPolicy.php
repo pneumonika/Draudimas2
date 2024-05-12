@@ -8,13 +8,13 @@ use Illuminate\Auth\Access\Response;
 
 class OwnerPolicy
 {
+    //0 - tik peržiūra, 1 - paprastas vartotojas, 2 - skaitantis vartotojas, 3 - administratorius.
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-//        return ($user->permission == 2) || ($user->permission == 3);
-        return true;
+        return ($user->permission == 0) || ($user->permission == 1) || ($user->permission == 2) || ($user->permission == 3);
     }
 
     /**
@@ -22,7 +22,7 @@ class OwnerPolicy
      */
     public function view(User $user, Owner $owner): bool
     {
-        return ($user->permission == 2) || ($user->permission == 3) || ($user->permission == 1 && $user->id == $owner->user_id);
+        return ($user->permission == 0) || ($user->permission == 2) || ($user->permission == 3) || ($user->permission == 1 && $user->id == $owner->user_id);
     }
 
     /**

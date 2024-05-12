@@ -8,13 +8,13 @@ use Illuminate\Auth\Access\Response;
 
 class CarPolicy
 {
+    //0 - tik peržiūra, 1 - paprastas vartotojas, 2 - skaitantis vartotojas, 3 - administratorius.
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        return true;
-//        return ($user->permission == 2) || ($user->permission == 3);
+        return ($user->permission == 0) || ($user->permission == 1) || ($user->permission == 2) || ($user->permission == 3);
     }
 
     /**
@@ -22,7 +22,7 @@ class CarPolicy
      */
     public function view(User $user, Car $car): bool
     {
-        return ($user->permission == 2) || ($user->permission == 3) || ($user->id == $car->owner->user_id);
+        return ($user->permission == 0) || ($user->permission == 2) || ($user->permission == 3) || ($user->permission == 1 && $user->id == $car->owner->user_id);
     }
 
     /**
